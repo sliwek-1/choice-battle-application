@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { saveQuizData } from "../localStorage/quizStorage";
 import { setQuiz } from "../slices/quizSlice";
+import { config } from "../config";
 
 export function useCreateQuiz() {
     const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ export function useCreateQuiz() {
             formData.append('status', data.status);
             formData.append('user_email', userEmail);
             
-            const request = await fetch('http://188.47.93.39:4000/create-quiz', {
+            const request = await fetch(`http://${config.host + ":" + config.serverPort}/create-quiz`, {
                 method: 'POST',
                 body: formData
             })

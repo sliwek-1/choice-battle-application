@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { config } from "../config";
 
 
 export function useRegister() {
@@ -10,7 +11,7 @@ export function useRegister() {
         try {   
             setLoading(true)
             
-            let request = await fetch('http://188.47.93.39:4000/register', {
+            let request = await fetch(`http://${config.host + ":" + config.serverPort}/register`, {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json'

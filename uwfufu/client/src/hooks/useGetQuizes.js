@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { config } from "../config";
 
 export function useGetQuizes() {
     const [loading, setLoading] = useState(false);
 
     const getQuizes = async () => {
         try {
-            let request = await fetch('http://188.47.93.39:4000/get-quizes', {
+            let request = await fetch(`http://${config.host + ":" + config.serverPort}/get-quizes`, {
                 method: "post"
             })
             

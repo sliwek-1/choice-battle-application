@@ -6,6 +6,7 @@ import { useGetQuestionDetails } from "../hooks/getQuestionsDetails";
 import { useGetRandomQuestions } from "../hooks/getRandomQuestion";
 import { Button } from "react-bootstrap";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { config } from "../config";
 import * as Yup from "yup";
 
 
@@ -72,7 +73,7 @@ export function QuizDetalis() {
         <>
             <Header />
             <section className="d-flex flex-column align-items-center">
-                <img src={"http://188.47.93.39:4000/" + quiz.title_img} alt={quiz.title} style={{width: "80vw", height: "20vh", objectFit: 'cover'}}/>
+                <img src={`http://${config.host + ":" + config.port}/` + quiz.title_img} alt={quiz.title} style={{width: "80vw", height: "20vh", objectFit: 'cover'}}/>
                 <div className="my-2" style={{width: "80vw", height: "20vh"}}>
                     <h2>{quiz.title}</h2>
                     <p>Kategoria: {quiz.category}</p>
@@ -107,7 +108,7 @@ export function QuizDetalis() {
                 {questions.map((question, i) => (
                     <div className="d-flex align-items-center p-3 my-2 border" style={{width: "45vw", height: "15vh", borderRadius: "10px"}}>
                         <p>{i + 1}.</p>
-                        <img src={"http://188.47.93.39:4000/" + question.source} alt={question.title} style={{width: "10vw", height: "10vh", objectFit: "contain"}} />
+                        <img src={`http://${config.host + ":" + config.serverPort}/` + question.source} alt={question.title} style={{width: "10vw", height: "10vh", objectFit: "contain"}} />
                         <p>{question.title}</p>
                     </div>
                 ))}

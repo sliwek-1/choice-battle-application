@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { config } from "../config";
 
 export function QuizHeader() {
     const emptyState ={
@@ -14,7 +15,7 @@ export function QuizHeader() {
         <div className="d-flex flex-column">
             <div className="header d-flex flex-column align-items-center">
                 <Card style={{width: "40vw", height: "55vh"}}>
-                    <Card.Img style={{width: "40vw", height: "350px", objectFit: "cover"}} src={"http://188.47.93.39:4000/" + quiz.filepath} />
+                    <Card.Img style={{width: "40vw", height: "350px", objectFit: "cover"}} src={`http://${config.host + ":" + config.serverPort}/` + quiz.filepath} />
                     <Card.Title className="p-3">{quiz.title}</Card.Title>
                     <div className="d-flex flex-column justify-content-around p-3">
                         <p>Kategoria: {quiz.category}</p>

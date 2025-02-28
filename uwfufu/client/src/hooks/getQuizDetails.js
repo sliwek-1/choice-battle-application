@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { config } from "../config";
 
 export function useGetQuizDetails() {
     
@@ -7,7 +8,7 @@ export function useGetQuizDetails() {
     const getQuizDetails = async (id) => {
         try {
             setLoading(true);
-            const request = await fetch('http://188.47.93.39:4000/get-quiz/', {
+            const request = await fetch(`http://${config.host + ":" + config.serverPort}/get-quiz/`, {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json', 

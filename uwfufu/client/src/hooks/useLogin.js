@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../slices/userSlice";
 import { savePersistedData } from "../localStorage/localstorage";
 import { useDispatch } from "react-redux";
+import { config } from "../config";
 
 export function useLogin() {
     const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ export function useLogin() {
     
     const login = async (data) => {
         try {   
-            const reqest = await fetch('http://188.47.93.39:4000/login', {
+            const reqest = await fetch(`http://${config.host + ":" + config.serverPort}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

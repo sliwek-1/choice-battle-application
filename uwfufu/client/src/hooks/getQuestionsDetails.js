@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { config } from "../config";
 
 export function useGetQuestionDetails() {
     
@@ -7,7 +8,7 @@ export function useGetQuestionDetails() {
     const getQuestionsDetails = async (id) => {
         try {
             setLoading(true);
-            const request = await fetch('http://188.47.93.39:4000/get-questions/', {
+            const request = await fetch(`http://${config.host + ":" + config.serverPort}/get-questions/`, {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',

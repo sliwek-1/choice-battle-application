@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { config } from "../config";
 
 export function useGetRandomQuestions() {
     const [loading, setLoading] = useState(false);
@@ -7,7 +8,7 @@ export function useGetRandomQuestions() {
         try {
             setLoading(true);
 
-            const request = await fetch("http://188.47.93.39:4000/get-random-questions", {
+            const request = await fetch(`http://${config.host + ":" + config.serverPort}/get-random-questions`, {
                 method: 'post', 
                 body: JSON.stringify(data),
                 headers: {

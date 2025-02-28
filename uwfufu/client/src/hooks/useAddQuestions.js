@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { config } from "../config";
 
 export function useQuestion() {
     const [loading, setLoading] = useState(false)
@@ -22,7 +23,7 @@ export function useQuestion() {
                 }
             })
             console.log(formData, quiz)
-            const request = await fetch('http://188.47.93.39:4000/add-questions/', {
+            const request = await fetch(`http://${config.host + ":" + config.serverPort}/add-questions/`, {
                 method: 'post',
                 body: formData
             })

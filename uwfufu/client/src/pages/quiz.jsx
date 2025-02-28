@@ -4,7 +4,7 @@ import { useGetRandomQuestions } from "../hooks/getRandomQuestion";
 import { useGetQuizDetails } from "../hooks/getQuizDetails";
 import { Header } from "../components/header";
 import { Button } from "react-bootstrap";
-
+import { config } from "../config";
 
 export function Quiz() {
     const {count, id} = useParams();
@@ -123,7 +123,7 @@ export function Quiz() {
                                 stages[round].pairs[roundOfStage].map(stage => (
                                     <>
                                         <div className="d-flex flex-column align-items-center justify-content-center border" style={{width: "45vw", height: "45vh", borderRadius: "15px"}}>
-                                            <img src={"http://188.47.93.39:4000/" + stage.source} style={{width: "15vh", height: "15vh", objectFit: "contain"}} />
+                                            <img src={`http://${config.host + ":" + config.serverPort}/` + stage.source} style={{width: "15vh", height: "15vh", objectFit: "contain"}} />
                                             <p>{stage.title}</p>
                                             <Button className="primary" onClick={() => getToNextRound(stage.id)}>Wybierz</Button>
                                         </div>
@@ -135,9 +135,9 @@ export function Quiz() {
                     :
                     <div className="d-flex justify-content-around align-items-center flex-column" style={{width: "100vw", height: "50vh"}}>
                         <h1>Wygrywa</h1>
-                        <img src={"http://188.47.93.39:4000/" + winner.source} alt="" style={{width: "15vh", height: "15vh", objectFit: "contain"}} />
+                        <img src={`http://${config.host + ":" + config.serverPort}/` + winner.source} alt="" style={{width: "15vh", height: "15vh", objectFit: "contain"}} />
                         <p>{winner.title}</p>    
-                        <Button href={"http://188.47.93.39:3000/quiz-details/" + id }>Zagraj jeszcze raz!</Button>
+                        <Button href={`http://${config.host + ":" + config.port}/` + id }>Zagraj jeszcze raz!</Button>
                     </div>
                 }
             </>
